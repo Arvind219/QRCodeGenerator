@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,9 +38,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   TextEditingController elevenDigitNumberController = TextEditingController();
   TextEditingController MRPController = TextEditingController();
+  TextEditingController manufacturerDateController = TextEditingController();
+  TextEditingController batchNumberController = TextEditingController();
+
 
   int? elevenDigitNo;
   double? MRP;
+  String? manufacturerDate;
+  String? batchNumber;
 
   @override
   Widget build(BuildContext context) {
@@ -82,6 +88,17 @@ class _MyHomePageState extends State<MyHomePage> {
                                 fontSize: 14,
                               )
                             ),
+                            keyboardType: TextInputType.number,
+                            inputFormatters: [
+                              FilteringTextInputFormatter.digitsOnly,
+                            ],
+                            maxLength: 11,
+                            validator: (value){
+                              if(value!.isEmpty || value.length < 11){
+                                return "Enter 11 digit number";
+                              }
+                              return null;
+                            },
                             onSaved: (value){
                               elevenDigitNo = int.tryParse(elevenDigitNumberController.text);
                             },
@@ -104,6 +121,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                   fontSize: 14,
                                 )
                             ),
+                            keyboardType: TextInputType.number,
+                            validator: (value){
+                              if(value!.isEmpty){
+                                return "Enter MRP";
+                              }
+                              return null;
+                            },
                             onSaved: (value){
                               MRP = double.parse(MRPController.text);
                             },
@@ -118,6 +142,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           SizedBox(height: 8,),
                           TextFormField(
+                            controller: manufacturerDateController,
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(),
                                 hintText: "Enter Manufacturer Date",
@@ -125,6 +150,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                   fontSize: 14,
                                 )
                             ),
+                            validator: (value){
+                              if(value!.isEmpty){
+                                return "Enter Manufacturer Date";
+                              }
+                              return null;
+                            },
+                            onSaved: (value){
+                              manufacturerDate = manufacturerDateController.text;
+                            },
                           ),
                           SizedBox(height: 10,),
                           Text(
@@ -136,6 +170,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           SizedBox(height: 8,),
                           TextFormField(
+                            controller: batchNumberController,
                             decoration: InputDecoration(
                                 border: OutlineInputBorder(),
                                 hintText: "Enter Batch Number",
@@ -143,6 +178,21 @@ class _MyHomePageState extends State<MyHomePage> {
                                   fontSize: 14,
                                 )
                             ),
+                            validator: (value){
+                              if(value!.isEmpty){
+                                return "Enter Batch Number";
+                              }
+                              return null;
+                            },
+                            onChanged: (value) {
+                              batchNumberController.value = TextEditingValue(
+                                text: value.toUpperCase(),
+                                selection: TextSelection.collapsed(offset: value.length),
+                              );
+                            },
+                            onSaved: (value){
+                              batchNumber = (batchNumberController.text).toUpperCase();
+                            },
                           ),
                           SizedBox(height: 10,),
                           ElevatedButton(
@@ -153,6 +203,9 @@ class _MyHomePageState extends State<MyHomePage> {
                                   // You can perform actions with the form data here and extract the details
                                   print('11 digit number: $elevenDigitNo');
                                   print('MRP: $MRP');
+                                  print('Manufacturer Date: $manufacturerDate');
+                                  print('Batch no.: $batchNumber');
+
                                 }
                               },
                               child: Text("Submit"))
