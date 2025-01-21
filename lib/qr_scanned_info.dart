@@ -48,7 +48,8 @@ class _QRScannedPageState extends State<QRScannedPage> {
                 Text("Copy"),
                 IconButton(
                     onPressed: (){
-
+                      final data = ClipboardData(text: scannedInfo!);
+                      Clipboard.setData(data);
                     },
                     icon: Icon(
                       Icons.copy,
