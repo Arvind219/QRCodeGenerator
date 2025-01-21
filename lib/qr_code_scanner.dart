@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:qr_code_generator/qr_scanned_info.dart';
 import 'package:qr_code_scanner_plus/qr_code_scanner_plus.dart';
 
 class QrCodeScannerPage extends StatefulWidget {
@@ -43,8 +44,7 @@ class _QrCodeScannerPageState extends State<QrCodeScannerPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   if (result != null)
-                    Text(
-                        'Barcode Type: ${result!.format}   Data: ${result!.code}')
+                    Text('Barcode Type: ${result!.format}   Data: ${result!.code}')
                   else
                     const Text('Scan a code'),
                   Row(
@@ -61,7 +61,7 @@ class _QrCodeScannerPageState extends State<QrCodeScannerPage> {
                             child: FutureBuilder(
                               future: controller?.getFlashStatus(),
                               builder: (context, snapshot) {
-                                return Text('Flash: ${snapshot.data}');
+                                return Text('Flash: ${snapshot.data}'); 
                               },
                             )),
                       ),
@@ -150,6 +150,14 @@ class _QrCodeScannerPageState extends State<QrCodeScannerPage> {
       setState(() {
         result = scanData;
       });
+
+      if(result != null) // if we get data by scanning below code will run
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => QRScannedPage(info: result!.code,)),
+        ); // it will pop the scanning page and scanned data sent to new page
+
+        controller.pauseCamera(); //pausing the camera as we already got the qr data
     });
   }
 

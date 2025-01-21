@@ -78,8 +78,10 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: Icon(
                 Icons.qr_code_scanner,
                 color: Colors.white,
+                size: 35,
               )
-          )
+          ),
+          SizedBox(width: 15,),
         ],
       ),
       body: SingleChildScrollView(
@@ -118,11 +120,15 @@ class _MyHomePageState extends State<MyHomePage> {
                                     color: Colors.grey[500],
                                   )
                               ),
+                              inputFormatters: [
+                                LengthLimitingTextInputFormatter(900), // using this instead of 'maxLength: 900' to hide the counter of text field.
+                              ],
+                              // maxLength: 900, // If I us this, there isn't any option to hide the counter of the text field.
                               minLines: 1,
-                              maxLines: 10,
+                              maxLines: 15,
                               validator: (value){
-                                if(value!.isEmpty){
-                                  return "This field can't be empty.";
+                                if(value!.isEmpty || value.length < 15){
+                                  return "The character count must be greater than 15.";
                                 }
                                 return null;
                               },
@@ -142,12 +148,15 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                 ),
+                SizedBox(height: 20,),
                 if(data != null)
                   QrImageView(
                     data: '$data',
                     version: QrVersions.auto,
                     size: 200.0,
                   ),
+                SizedBox(height: 20,),
+
               ],
             ),
         
