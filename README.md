@@ -1,6 +1,6 @@
-# qr_code_generator
+# QR Code Generator
 
-A new Flutter project to create qr code for my informations
+A new Flutter project to create QR code for any informations. You can get information of any QR just by scanning. 
 
 ## Getting Started
 
