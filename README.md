@@ -2,6 +2,8 @@
 
 A new Flutter project to create QR code for any informations. You can get information of any QR just by scanning. 
 
+![image alt](https://drive.google.com/file/d/1Gnt1N9YM2J4V0wTSGJwX-ZgqADxD1Ziw/view)
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
