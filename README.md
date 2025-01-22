@@ -2,19 +2,12 @@
 
 A new Flutter project to create QR code for any informations. You can get information of any QR just by scanning. 
 
-<img src="https://drive.google.com/uc?export=view&id=1Gnt1N9YM2J4V0wTSGJwX-ZgqADxD1Ziw" alt="image alt" width="400" />
+## Download the App
+Click the link below to download the app:
 
-![image alt](https://drive.google.com/uc?export=view&id=1Gnt1N9YM2J4V0wTSGJwX-ZgqADxD1Ziw)
+[Download My App](https://drive.google.com/uc?export=download&id=1I1ZqFT2jgd_YuJw1nIf-IXznxwRz8UkD)
 
-## Getting Started
+<img src="https://drive.google.com/uc?export=view&id=1Gnt1N9YM2J4V0wTSGJwX-ZgqADxD1Ziw" alt="image alt" width="300" />
+<img src="https://drive.google.com/uc?export=view&id=1JMyOX1ogKuoQwgVYQemZBlH1OLeMBieW" alt="image alt" width="300" />
+<img src="https://drive.google.com/uc?export=view&id=1pe3Dsl0RL2ywKE4spRV_dSGQYj1ZP91P" alt="image alt" width="300" />
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
